@@ -2,8 +2,8 @@
     <!-- Navbar Section -->
     <nav class="bg-white shadow-md px-4 py-2 flex justify-between items-center">
       <div class="flex items-center space-x-4">
-        <img src="assets/logo.png" alt="Logo" class="h-8">
-        <span class="text-xl font-semibold">The Fridge</span>
+        <img src="/src/assets/logo.png" alt="Logo" class="h-8">
+        <span class="text-xl font-semibold">The Bridge</span>
       </div>
       <div>
         <button class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">Register Now</button>
@@ -11,7 +11,7 @@
     </nav>
 
     <!-- Register Section -->
-    <div class="bg-cover bg-center h-96 flex items-center justify-center" style="background-image: url('assets/hero-bg.jpg')">
+    <div id="register" class="bg-cover bg-center h-96 flex items-center justify-center" style="background-image: url('assets/hero-bg.jpg')">
       <div class="text-center text-white">
         <h1 class="text-4xl font-bold">Improve your skills on your own</h1>
         <p class="text-lg mt-2">To prepare for a better future</p>
@@ -20,7 +20,7 @@
     </div>
 
     <!-- Courses Section -->
-    <section class="py-8 px-4">
+    <section id="courses" class="py-8 px-4">
       <h2 class="text-2xl font-bold text-center mb-4">Discover Our Courses</h2>
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
         <div *ngFor="let course of courses" class="border rounded-lg overflow-hidden shadow">
@@ -34,7 +34,7 @@
     </section>
 
     <!-- Contact Section -->
-    <section class="bg-yellow-500 py-8 px-4">
+    <section  id="contact" class="bg-yellow-500 py-8 px-4">
       <h2 class="text-2xl font-bold text-center text-white mb-4">Contact Us</h2>
       <form class="max-w-lg mx-auto bg-white p-4 rounded shadow">
         <div class="mb-4">

@@ -9,11 +9,11 @@ import { Component } from '@angular/core';
 })
 export class CoursesComponent {
   courses = [
-    { image: 'assets/course1.jpg', title: 'Spring Boot / Angular', price: 350 },
-    { image: 'assets/course2.jpg', title: 'Node JS / React', price: 350 },
-    { image: 'assets/course3.jpg', title: 'Flutter / Firebase', price: 350 },
-    { image: 'assets/course4.jpg', title: 'Business Intelligence', price: 350 },
-    { image: 'assets/course5.jpg', title: 'Artificial Intelligence', price: 350 },
-    { image: 'assets/course6.jpg', title: 'DevOps', price: 350 }
+    { image: 'assets/springang.png', title: 'Spring Boot / Angular', price: 350 },
+    { image: 'assets/react.png', title: 'Node JS / React', price: 350 },
+    { image: 'assets/flutter.png', title: 'Flutter / Firebase', price: 350 },
+    { image: 'assets/busintel.webp', title: 'Business Intelligence', price: 350 },
+    { image: 'assets/ai.jpg', title: 'Artificial Intelligence', price: 350 },
+    { image: 'assets/devops.webp', title: 'DevOps', price: 350 }
   ];
 }
