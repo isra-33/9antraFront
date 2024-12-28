@@ -1,19 +1,20 @@
+import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-courses',
   standalone: true,
-  imports: [],
+  imports: [CommonModule],
   templateUrl: './courses.component.html',
-  styleUrl: './courses.component.css'
+  styleUrls: ['./courses.component.css'], // Ensure the correct path
 })
 export class CoursesComponent {
   courses = [
-    { image: 'assets/springang.png', title: 'Spring Boot / Angular', price: 350 },
-    { image: 'assets/react.png', title: 'Node JS / React', price: 350 },
-    { image: 'assets/flutter.png', title: 'Flutter / Firebase', price: 350 },
-    { image: 'assets/busintel.webp', title: 'Business Intelligence', price: 350 },
-    { image: 'assets/ai.jpg', title: 'Artificial Intelligence', price: 350 },
-    { image: 'assets/devops.webp', title: 'DevOps', price: 350 }
+    { image: 'assets/images/springang.png', title: 'Spring Boot / Angular', price: 350 },
+    { image: 'assets/images/react.png', title: 'Node JS / React', price: 350 },
+    { image: 'assets/images/flutter.png', title: 'Flutter / Firebase', price: 350 },
+    { image: 'assets/images/busintel.webp', title: 'Business Intelligence', price: 350 },
+    { image: 'assets/images/ai.jpg', title: 'Artificial Intelligence', price: 350 },
+    { image: 'assets/images/devops.webp', title: 'DevOps', price: 350 },
   ];
 }

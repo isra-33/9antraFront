@@ -1,12 +1,20 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { NavbarComponent } from "../navbar/navbar.component";
+import { RegisterComponent } from "../register/register.component";
+import { CoursesComponent } from "../courses/courses.component";
+import { ContactComponent } from "../contact/contact.component";
 
 @Component({
   selector: 'app-landing-page',
   templateUrl: './landing-page.component.html',
   styleUrls: ['./landing-page.component.css'],
   standalone: true,
-  imports: [CommonModule],
+  imports: [
+    NavbarComponent, 
+    RegisterComponent, 
+    CoursesComponent,
+     ContactComponent],
 })
 export class LandingPageComponent {
   courses = [
