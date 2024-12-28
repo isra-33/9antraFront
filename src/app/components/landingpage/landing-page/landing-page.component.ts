@@ -2,8 +2,8 @@ import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { NavbarComponent } from "../navbar/navbar.component";
 import { RegisterComponent } from "../register/register.component";
-import { CoursesComponent } from "../courses/courses.component";
-import { ContactComponent } from "../contact/contact.component";
+import { CoursesComponent } from '../courses/courses.component';
+import { ContactComponent } from '../contact/contact.component';
 
 @Component({
   selector: 'app-landing-page',
@@ -11,10 +11,12 @@ import { ContactComponent } from "../contact/contact.component";
   styleUrls: ['./landing-page.component.css'],
   standalone: true,
   imports: [
-    NavbarComponent, 
-    RegisterComponent, 
+    CommonModule,
+    NavbarComponent,
+    RegisterComponent,
     CoursesComponent,
-     ContactComponent],
+    ContactComponent,
+],
 })
 export class LandingPageComponent {
   courses = [
