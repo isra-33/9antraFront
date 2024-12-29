@@ -5,7 +5,6 @@ import { LoginComponent } from './components/admin/login/login.component';
 import { AdminHomeComponent } from './components/admin/home/home.component';
 import { CourseListComponent } from './components/course-list/course-list.component';
 
-// Define the application routes
 export const routes: Routes = [
   { path: '', component: LandingPageComponent },
   { path: 'admin', component: LoginComponent },
