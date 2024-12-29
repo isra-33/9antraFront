@@ -15,7 +15,7 @@ import { LandingPageComponent } from './components/landingpage/landing-page/land
     AppComponent,
     LandingPageComponent,
     BrowserModule,
-    CommonModule, // Add CommonModule here
+    CommonModule,
     FormsModule,
     AppRoutingModule,
   ],

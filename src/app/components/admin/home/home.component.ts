@@ -1,31 +1,40 @@
-import { Component } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { NavbarComponent } from "../../landingpage/navbar/navbar.component";
+import { CourseService } from '../../../service/course.service';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css'],
   standalone:true,
-  imports: [FormsModule, NavbarComponent]
+  imports: [NavbarComponent,FormsModule]
 })
-export class AdminHomeComponent {
-  courses = [
-    { image: 'assets/images/react.png', title: 'Node JS / React', price: 350 },
-    { image: 'assets/images/flutter.png', title: 'Flutter / Firebase', price: 350 },
-    { image: 'assets/images/ai.jpg', title: 'Artificial Intelligence', price: 350 },
-  ];
-
+export class AdminHomeComponent implements OnInit {
+  courses: any[] = [];
   isModalOpen = false;
   isEditing = false;
-  currentCourse: any = { image: '', title: '', price: '' };
+  currentCourse: any = { id: null, image: '', title: '', price: '' };
 
-  constructor(private router: Router) {}
+  constructor(
+    private courseService: CourseService,
+    private router: Router
+  ) {}
+
+  ngOnInit(): void {
+    this.loadCourses();  // Load the courses when the component is initialized
+  }
+
+  loadCourses(): void {
+    this.courseService.getAllCourses().subscribe(courses => {
+      this.courses = courses;
+    });
+  }
 
   openCreateModal() {
     this.isEditing = false;
-    this.currentCourse = { image: '', title: '', price: '' };
+    this.currentCourse = { id: null, image: '', title: '', price: '' };
     this.isModalOpen = true;
   }
 
@@ -41,16 +50,25 @@ export class AdminHomeComponent {
 
   saveCourse() {
     if (this.isEditing) {
-      const index = this.courses.findIndex((c) => c.title === this.currentCourse.title);
-      this.courses[index] = { ...this.currentCourse };
+      this.courseService.updateCourse(this.currentCourse.id,this.currentCourse.course).subscribe(updatedCourse => {
+        const index = this.courses.findIndex(c => c.id === updatedCourse.id);
+        if (index !== -1) {
+          this.courses[index] = updatedCourse;
+        }
+        this.isModalOpen = false;
+      });
     } else {
-      this.courses.push({ ...this.currentCourse });
+      this.courseService.addCourse(this.currentCourse).subscribe(newCourse => {
+        this.courses.push(newCourse);
+        this.isModalOpen = false;
+      });
     }
-    this.isModalOpen = false;
   }
 
   deleteCourse(course: any) {
-    this.courses = this.courses.filter((c) => c !== course);
+    this.courseService.deleteCourse(course.id).subscribe(() => {
+      this.courses = this.courses.filter(c => c.id !== course.id);
+    });
   }
 
   logout() {

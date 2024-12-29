@@ -1,5 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-courses',
@@ -17,4 +18,9 @@ export class CoursesComponent {
     { image: 'assets/images/ai.jpg', title: 'Artificial Intelligence', price: 350 },
     { image: 'assets/images/devops.webp', title: 'DevOps', price: 350 },
   ];
+  constructor(private router: Router) {}
+
+  viewMore() {
+    this.router.navigate(['/course-list']);
+  }
 }
