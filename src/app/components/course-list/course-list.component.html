@@ -1,17 +1,26 @@
 <section class="bg-gray-50 min-h-screen">
-  <!-- Navbar -->
   <app-navbar></app-navbar>
   
   <div class="py-8 px-4">
-    <!-- Title Section -->
     <div class="mb-4">
       <h2 class="text-3xl font-bold text-gray-900">All Courses</h2>
       <p class="text-gray-600">Browse our selection of courses and learn something new today!</p>
     </div>
     
-    <!-- Courses Grid -->
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-      <!-- Course Card -->
+      <div *ngFor="let course of defaultCourses" class="max-w-xs mx-auto bg-white border rounded-lg shadow-lg overflow-hidden transition-all duration-300 hover:shadow-2xl">
+        <img [src]="course.image" alt="Course Image" class="w-full h-48 object-cover rounded-t-lg">
+        <div class="p-4">
+          <h3 class="text-xl font-semibold text-gray-900">{{ course.title }}</h3>
+          <p class="text-gray-600">{{ course.price }} DT/Month</p>
+        </div>
+        <div class="p-4 bg-gray-100 flex justify-between items-center">
+          <button class="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors duration-300">
+            View Course
+          </button>
+        </div>
+      </div>
+
       <div *ngFor="let course of courses" class="max-w-xs mx-auto bg-white border rounded-lg shadow-lg overflow-hidden transition-all duration-300 hover:shadow-2xl">
         <img [src]="course.image" alt="Course Image" class="w-full h-48 object-cover rounded-t-lg">
         <div class="p-4">
