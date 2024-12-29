@@ -17,8 +17,8 @@ export class LoginComponent {
   };
 
   admins = [
-    {email: 'admin@example.com',
-    password: 'admin123',
+    {email: 'isra@chalbi.com',
+    password: 'isra123',
     },
   ];
 
