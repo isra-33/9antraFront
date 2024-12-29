@@ -1,26 +1,33 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { CourseService } from '../../../service/course.service';
 
 @Component({
   selector: 'app-courses',
   standalone: true,
   imports: [CommonModule],
   templateUrl: './courses.component.html',
-  styleUrls: ['./courses.component.css'], // Ensure the correct path
+  styleUrls: ['./courses.component.css'],
 })
-export class CoursesComponent {
-  courses = [
-    { image: 'assets/images/springang.png', title: 'Spring Boot / Angular', price: 350 },
-    { image: 'assets/images/react.png', title: 'Node JS / React', price: 350 },
-    { image: 'assets/images/flutter.png', title: 'Flutter / Firebase', price: 350 },
-    { image: 'assets/images/busintel.webp', title: 'Business Intelligence', price: 350 },
-    { image: 'assets/images/ai.jpg', title: 'Artificial Intelligence', price: 350 },
-    { image: 'assets/images/devops.webp', title: 'DevOps', price: 350 },
-  ];
-  constructor(private router: Router) {}
+export class CoursesComponent implements OnInit {
+  courses: any[] = [];
+  displayedCourses: any[] = []; 
 
+  constructor(private courseService: CourseService, private router: Router) {}
+
+  ngOnInit(): void {
+    this.courseService.getAllCourses().subscribe(
+      (data) => {
+        this.courses = data;
+        this.displayedCourses = this.courses.slice(0, 6); 
+      },
+      (error) => {
+        console.error('Error fetching courses:', error);
+      }
+    );
+  }
   viewMore() {
-    this.router.navigate(['/course-list']);
+    this.router.navigate(['/courses']);
   }
 }

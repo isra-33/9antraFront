@@ -1,10 +1,12 @@
 import { Component } from '@angular/core';
 import { CourseService } from '../../service/course.service';
+import { NavbarComponent } from "../landingpage/navbar/navbar.component";
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-course-list',
   standalone: true,
-  imports: [],
+  imports: [NavbarComponent,CommonModule],
   templateUrl: './course-list.component.html',
   styleUrl: './course-list.component.css'
 })

@@ -7,9 +7,12 @@ import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app.routes'; // Import AppRoutingModule
 import { provideHttpClient } from '@angular/common/http';
 import { LandingPageComponent } from './components/landingpage/landing-page/landing-page.component';
+import { AdminHomeComponent } from './components/admin/home/home.component';
+import { CourseListComponent } from './components/course-list/course-list.component';
 
 @NgModule({
   declarations: [
+    
   ],
   imports: [
     AppComponent,
@@ -17,6 +20,8 @@ import { LandingPageComponent } from './components/landingpage/landing-page/land
     BrowserModule,
     CommonModule,
     FormsModule,
+    AdminHomeComponent,
+    CourseListComponent,
     AppRoutingModule,
   ],
   providers: [provideHttpClient()],

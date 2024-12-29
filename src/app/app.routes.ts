@@ -8,9 +8,9 @@ import { CourseListComponent } from './components/course-list/course-list.compon
 // Define the application routes
 export const routes: Routes = [
   { path: '', component: LandingPageComponent },
-  { path: 'admin/login', component: LoginComponent },
-  { path: 'admin/home', component: AdminHomeComponent },
-  { path: 'courses', component: CourseListComponent },
+  { path: 'admin', component: LoginComponent }, // Admin login page
+  { path: 'admin/home', component: AdminHomeComponent }, // Admin home page
+  { path: 'courses', component: CourseListComponent }, // Admin home page
   { path: '**', redirectTo: '' }, 
 ];
 

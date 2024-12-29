@@ -3,13 +3,14 @@ import { Router } from '@angular/router';
 import { NavbarComponent } from "../../landingpage/navbar/navbar.component";
 import { CourseService } from '../../../service/course.service';
 import { FormsModule } from '@angular/forms';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css'],
   standalone:true,
-  imports: [NavbarComponent,FormsModule]
+  imports: [NavbarComponent,FormsModule,CommonModule]
 })
 export class AdminHomeComponent implements OnInit {
   courses: any[] = [];
@@ -50,7 +51,7 @@ export class AdminHomeComponent implements OnInit {
 
   saveCourse() {
     if (this.isEditing) {
-      this.courseService.updateCourse(this.currentCourse.id,this.currentCourse.course).subscribe(updatedCourse => {
+      this.courseService.updateCourse(this.currentCourse.id, this.currentCourse).subscribe(updatedCourse => {
         const index = this.courses.findIndex(c => c.id === updatedCourse.id);
         if (index !== -1) {
           this.courses[index] = updatedCourse;
@@ -64,6 +65,7 @@ export class AdminHomeComponent implements OnInit {
       });
     }
   }
+  
 
   deleteCourse(course: any) {
     this.courseService.deleteCourse(course.id).subscribe(() => {

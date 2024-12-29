@@ -32,87 +32,83 @@
           </tr>
         </thead>
         <tbody>
-          <tr class="border-t">
-            @for (course of courses; track $index) {
-              <td class="px-6 py-4">
-                <img [src]="course.image" alt="Course Image" class="h-16 w-16 object-cover rounded-lg">
-              </td>
-              <td class="px-6 py-4">{{ course.title }}</td>
-              <td class="px-6 py-4">{{ course.price }} DT/Month</td>
-              <td class="px-6 py-4 text-center space-x-2">
-                <button
-                  class="bg-yellow-500 text-white px-4 py-2 rounded-lg hover:bg-yellow-600"
-                  (click)="openEditModal(course)"
-                >
-                  Edit
-                </button>
-                <button
-                  class="bg-red-500 text-white px-4 py-2 rounded-lg hover:bg-red-600"
-                  (click)="deleteCourse(course)"
-                >
-                  Delete
-                </button>
-              </td>
-            }
+          <tr class="border-t" *ngFor="let course of courses">
+            <td class="px-6 py-4">
+              <img [src]="course.image" alt="Course Image" class="h-16 w-16 object-cover rounded-lg">
+            </td>
+            <td class="px-6 py-4">{{ course.title }}</td>
+            <td class="px-6 py-4">{{ course.price }} DT/Month</td>
+            <td class="px-6 py-4 text-center space-x-2">
+              <button
+                class="bg-yellow-500 text-white px-4 py-2 rounded-lg hover:bg-yellow-600"
+                (click)="openEditModal(course)"
+              >
+                Edit
+              </button>
+              <button
+                class="bg-red-500 text-white px-4 py-2 rounded-lg hover:bg-red-600"
+                (click)="deleteCourse(course)"
+              >
+                Delete
+              </button>
+            </td>
           </tr>
         </tbody>
       </table>
     </div>
 
     <!-- Create/Edit Modal -->
-    <div class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
-      @if(isModalOpen){
-        <div class="bg-white p-8 rounded-lg shadow-lg w-full max-w-lg">
-          <h3 class="text-2xl font-bold mb-6">{{ isEditing ? 'Edit Course' : 'Add New Course' }}</h3>
-          <form (ngSubmit)="saveCourse()">
-            <div class="mb-4">
-              <label class="block text-sm font-medium text-gray-700">Title</label>
-              <input
-                [(ngModel)]="currentCourse.title"
-                name="title"
-                type="text"
-                required
-                class="w-full px-4 py-2 border rounded-lg"
-              />
-            </div>
-            <div class="mb-4">
-              <label class="block text-sm font-medium text-gray-700">Price</label>
-              <input
-                [(ngModel)]="currentCourse.price"
-                name="price"
-                type="number"
-                required
-                class="w-full px-4 py-2 border rounded-lg"
-              />
-            </div>
-            <div class="mb-4">
-              <label class="block text-sm font-medium text-gray-700">Image URL</label>
-              <input
-                [(ngModel)]="currentCourse.image"
-                name="image"
-                type="text"
-                required
-                class="w-full px-4 py-2 border rounded-lg"
-              />
-            </div>
-            <div class="flex justify-end space-x-4">
-              <button
-                type="button"
-                class="bg-gray-500 text-white px-6 py-2 rounded-lg hover:bg-gray-600"
-                (click)="closeModal()"
-              >
-                Cancel
-              </button>
-              <button
-                type="submit"
-                class="bg-blue-600 text-white px-6 py-2 rounded-lg hover:bg-blue-700"
-              >
-                Save
-              </button>
-            </div>
-          </form>
-        </div>
-      }
+    <div *ngIf="isModalOpen" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+      <div class="bg-white p-8 rounded-lg shadow-lg w-full max-w-lg">
+        <h3 class="text-2xl font-bold mb-6">{{ isEditing ? 'Edit Course' : 'Add New Course' }}</h3>
+        <form (ngSubmit)="saveCourse()">
+          <div class="mb-4">
+            <label class="block text-sm font-medium text-gray-700">Title</label>
+            <input
+              [(ngModel)]="currentCourse.title"
+              name="title"
+              type="text"
+              required
+              class="w-full px-4 py-2 border rounded-lg"
+            />
+          </div>
+          <div class="mb-4">
+            <label class="block text-sm font-medium text-gray-700">Price</label>
+            <input
+              [(ngModel)]="currentCourse.price"
+              name="price"
+              type="number"
+              required
+              class="w-full px-4 py-2 border rounded-lg"
+            />
+          </div>
+          <div class="mb-4">
+            <label class="block text-sm font-medium text-gray-700">Image URL</label>
+            <input
+              [(ngModel)]="currentCourse.image"
+              name="image"
+              type="text"
+              required
+              class="w-full px-4 py-2 border rounded-lg"
+            />
+          </div>
+          <div class="flex justify-end space-x-4">
+            <button
+              type="button"
+              class="bg-gray-500 text-white px-6 py-2 rounded-lg hover:bg-gray-600"
+              (click)="closeModal()"
+            >
+              Cancel
+            </button>
+            <button
+              type="submit"
+              class="bg-blue-600 text-white px-6 py-2 rounded-lg hover:bg-blue-700"
+            >
+              Save
+            </button>
+          </div>
+        </form>
+      </div>
     </div>
   </div>
 </section>
